@@ -1,0 +1,19 @@
+{
+  "name": "android-app-launch-intent-finder",
+  "version": "1.0.0",
+  "description": "Finds launch intents in an Android application APK.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "launch-intent-finder": "index.js"
+  },
+  "author": "tfKamran",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "shelljs": "^0.8.1",
+    "xml-js": "^1.6.2"
+  }
+}
