@@ -25,6 +25,10 @@ function main(installedLocation) {
     deleteIfExists(installedLocation + '/app');
     deleteIfExists(installedLocation + '/workspace/app');
 
+    if (!fs.existsSync(installedLocation + '/workspace')) {
+        fs.mkdirSync(installedLocation + '/workspace');
+    }
+
     // Decompile the APK
     shell.cp(process.argv[2], installedLocation + '/workspace/app.apk');
     shell.exec('java -jar ' + installedLocation + '/tools/apktool_2.2.1.jar -f d ' + installedLocation + '/workspace/app.apk');
