@@ -4,8 +4,9 @@ const shell = require('shelljs');
 const fs = require('fs');
 const xmlToJSON = require('xml-js');
 const chalk = require('chalk');
+const { getInstalledPath } = require('get-installed-path')
 
-function main() {
+function main(installedLocation) {
     // Check for input arguments
     if (process.argv.length != 3) {
         console.log(
@@ -20,17 +21,17 @@ function main() {
     }
 
     // Cleanup if required
-    deleteIfExists('workspace/app.apk');
-    deleteIfExists('app');
-    deleteIfExists('workspace/app');
+    deleteIfExists(installedLocation + '/workspace/app.apk');
+    deleteIfExists(installedLocation + '/app');
+    deleteIfExists(installedLocation + '/workspace/app');
 
     // Decompile the APK
-    shell.exec('cp ' + process.argv[2] + ' workspace/app.apk');
-    shell.exec('java -jar tools/apktool_2.2.1.jar -f d workspace/app.apk');
+    shell.exec('cp ' + process.argv[2] + ' ' + installedLocation + '/workspace/app.apk');
+    shell.exec('java -jar ' + installedLocation + '/tools/apktool_2.2.1.jar -f d ' + installedLocation + '/workspace/app.apk');
     shell.exec('mv app workspace/');
 
     // Look for launch intents
-    const manifest = fs.readFileSync('workspace/app/AndroidManifest.xml', 'utf-8');
+    const manifest = fs.readFileSync(installedLocation + '/workspace/app/AndroidManifest.xml', 'utf-8');
 
     if (manifest.indexOf('android.intent.category.LAUNCHER') === -1) {
         console.log('No launcher activity found in the provided APK');
@@ -110,4 +111,4 @@ function getDivider() {
     return chalk.grey('--------------------------------------------------------------------------------------------');
 }
 
-main();
+getInstalledPath('android-app-launch-intent-finder').then(main);

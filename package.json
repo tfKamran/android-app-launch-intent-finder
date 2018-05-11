@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",
+    "get-installed-path": "^4.0.8",
     "shelljs": "^0.8.1",
     "xml-js": "^1.6.2"
   },
