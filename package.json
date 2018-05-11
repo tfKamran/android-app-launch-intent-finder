@@ -1,6 +1,6 @@
 {
   "name": "android-app-launch-intent-finder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Finds launch intents in an Android application APK.",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,12 @@
     "chalk": "^2.4.1",
     "shelljs": "^0.8.1",
     "xml-js": "^1.6.2"
-  }
+  },
+  "keywords": [
+    "android",
+    "decompile",
+    "reverse",
+    "engineer",
+    "apk"
+  ]
 }
