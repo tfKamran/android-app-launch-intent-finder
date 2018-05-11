@@ -1,6 +1,6 @@
 {
   "name": "android-app-launch-intent-finder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Finds launch intents in an Android application APK.",
   "main": "index.js",
   "scripts": {
