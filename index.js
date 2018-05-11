@@ -26,9 +26,9 @@ function main(installedLocation) {
     deleteIfExists(installedLocation + '/workspace/app');
 
     // Decompile the APK
-    shell.exec('cp ' + process.argv[2] + ' ' + installedLocation + '/workspace/app.apk');
+    shell.cp(process.argv[2], installedLocation + '/workspace/app.apk');
     shell.exec('java -jar ' + installedLocation + '/tools/apktool_2.2.1.jar -f d ' + installedLocation + '/workspace/app.apk');
-    shell.exec('mv app workspace/');
+    shell.mv(installedLocation + '/app ', installedLocation + '/workspace/');
 
     // Look for launch intents
     const manifest = fs.readFileSync(installedLocation + '/workspace/app/AndroidManifest.xml', 'utf-8');
