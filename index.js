@@ -32,7 +32,7 @@ function main(installedLocation) {
     // Decompile the APK
     shell.cp(process.argv[2], installedLocation + '/workspace/app.apk');
     shell.exec('java -jar ' + installedLocation + '/tools/apktool_2.2.1.jar -f d ' + installedLocation + '/workspace/app.apk');
-    shell.mv(installedLocation + '/app ', installedLocation + '/workspace/');
+    shell.mv(shell.pwd() + '/app ', installedLocation + '/workspace/');
 
     // Look for launch intents
     const manifest = fs.readFileSync(installedLocation + '/workspace/app/AndroidManifest.xml', 'utf-8');
@@ -87,7 +87,7 @@ function main(installedLocation) {
 
 function deleteIfExists(file) {
     if (fs.existsSync(file)) {
-        shell.exec('rm -rf ' + file);
+        shell.rm('-rf', file);
     }
 }
 
