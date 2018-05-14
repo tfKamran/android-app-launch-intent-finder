@@ -10,7 +10,7 @@
     "launch-intent-finder": "index.js"
   },
   "author": "tfKamran",
-  "license": "MIT",
+  "license": "Apache License 2.0",
   "dependencies": {
     "chalk": "^2.4.1",
     "get-installed-path": "^4.0.8",
