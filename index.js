@@ -97,8 +97,6 @@ function isLauncherActivity(activity) {
     activity.elements.forEach(intentFilters => {
         if (intentFilters.elements) {
             intentFilters.elements.forEach(intentFilter => {
-                var filter = intentFilter.name + ': ';
-
                 Object.keys(intentFilter.attributes).forEach(key => {
                     if (intentFilter.attributes[key] === 'android.intent.category.LAUNCHER') {
                         isLauncherActivity = true;
