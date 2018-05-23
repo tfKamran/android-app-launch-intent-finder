@@ -45,7 +45,7 @@ function main(installedLocation) {
     const manifestJSON = JSON.parse(xmlToJSON.xml2json(manifest));
     const application = manifestJSON.elements[0].elements.filter(element => element.name == 'application')[0];
     const activities = application.elements.filter(element => element.name == 'activity' && element.elements
-        && (element.attributes['android:exported'] || isLauncherActivity(element)));
+        && (element.attributes['android:exported'] == undefined || element.attributes['android:exported'] == 'true' || isLauncherActivity(element)));
 
     console.log(getDivider());
 
