@@ -66,17 +66,7 @@ function main(installedLocation) {
 
             if (intentFilters.elements) {
                 intentFilters.elements.forEach(intentFilter => {
-                    var filter = intentFilter.name + ': ';
-
-                    Object.keys(intentFilter.attributes).forEach(key => {
-                        filter += key.split(':')[1] + '="' + intentFilter.attributes[key] + '", ';
-                    });
-
-                    if (isFoundToBeLauncherActivity) {
-                        filter = chalk.bold(filter);
-                    }
-
-                    console.log(filter);
+                    prettyPrint(intentFilter,  isFoundToBeLauncherActivity);
                 });
             }
         });
@@ -107,6 +97,27 @@ function isLauncherActivity(activity) {
     });
 
     return isLauncherActivity;
+}
+
+function prettyPrint(intentFilter, isFoundToBeLauncherActivity) {
+    var filter = intentFilter.name + ': ';
+    var sample = '';
+
+    Object.keys(intentFilter.attributes).forEach(key => {
+        filter += key.split(':')[1] + '="' + intentFilter.attributes[key] + '", ';
+    });
+
+    if (intentFilter.name == 'data') {
+        // console.log(JSON.stringify(intentFilter.attributes));
+        sample = chalk.hex('#00E000')('Sample URI: ' + intentFilter.attributes['android:scheme'] + '://' + intentFilter.attributes['android:host']);
+    }
+
+    if (isFoundToBeLauncherActivity) {
+        filter = chalk.bold(filter);
+        sample = chalk.bold(sample);
+    }
+
+    console.log(sample ? filter + ' - ' + sample : filter);
 }
 
 function getDivider() {
