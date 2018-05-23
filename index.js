@@ -50,7 +50,7 @@ function main(installedLocation) {
     console.log(getDivider());
 
     activities.forEach(activity => {
-        var activityHeader = '\nActivity: ' + activity.attributes['android:name'];
+        var activityHeader = chalk.underline('\nActivity') + ': ' + activity.attributes['android:name'];
         const isFoundToBeLauncherActivity = isLauncherActivity(activity);
 
         if (isFoundToBeLauncherActivity) {
