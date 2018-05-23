@@ -108,8 +108,11 @@ function prettyPrint(intentFilter, isFoundToBeLauncherActivity) {
     });
 
     if (intentFilter.name == 'data') {
-        // console.log(JSON.stringify(intentFilter.attributes));
-        sample = chalk.hex('#00E000')('Sample URI: ' + intentFilter.attributes['android:scheme'] + '://' + intentFilter.attributes['android:host']);
+        const host = intentFilter.attributes['android:host'];
+        const scheme = intentFilter.attributes['android:scheme'];
+        if (scheme) {
+            sample = chalk.hex('#00E000')('Sample URI: ' + scheme + '://' + (host ? host : ''));
+        }
     }
 
     if (isFoundToBeLauncherActivity) {
