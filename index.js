@@ -56,7 +56,7 @@ function main(installedLocation) {
         if (isFoundToBeLauncherActivity) {
             activityHeader = chalk.hex('#00FF00').bold(activityHeader);
         } else {
-            activityHeader = chalk.hex('#A0A0FF')(activityHeader);
+            activityHeader = chalk.hex('#E0E000')(activityHeader);
         }
 
         console.log(activityHeader);
